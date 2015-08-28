@@ -1,17 +1,18 @@
-import { Reducer } from 'fluxette';
+import { Shape, Reducer } from 'fluxette';
+import { SEARCH, REPO } from './types';
 
-export default Reducer([], {
-	add: (todos, action) =>
-		[{ id: todos.length === 0 ? 0 : todos[0].id + 1, text: action.text, done: false },
-		...todos],
-	delete: (todos, action) => todos.filter(todo => todo.id !== action.id),
-	toggle: (todos, action) => todos.map(todo =>
-		todo.id === action.id
-			? { ...todo, done: !todo.done }
-			: todo),
-	edit: (todos, action) => todos.map(todo =>
-		todo.id === action.id
-			? { ...todo, text: action.text }
-			: todo),
-	clear: () => []
+export default Shape({
+	repos: Reducer([], {
+		[SEARCH.SUCCESS]: (repos, action) => action.repos
+	}),
+	details: Reducer(null, {
+		[REPO.REQUEST]: () => null,
+		[REPO.SUCCESS]: (repo, action) => action.repo
+	}),
+	loading: Reducer(false, {
+		[SEARCH.REQUEST]: () => true,
+		[SEARCH.SUCCESS]: () => false,
+		[REPO.REQUEST]: () => true,
+		[REPO.SUCCESS]: () => false
+	})
 });

@@ -1,7 +1,7 @@
 {
-  "name": "fluxette-todo",
+  "name": "fluxette-react-router",
   "version": "0.1.0",
-  "description": "Fluxette todo example.",
+  "description": "Fluxette React-Router example.",
   "scripts": {
     "dev": "node ."
   },
@@ -21,7 +21,10 @@
     "webpack-dev-server": "^1.10.1"
   },
   "dependencies": {
-    "fluxette": "^0.15.4",
-    "react": "^0.13.3"
+    "axios": "^0.5.4",
+    "fluxette": "^0.16.0",
+    "mdl-react": "0.0.24",
+    "react": "^0.13.3",
+    "react-router": "^1.0.0-beta3"
   }
 }
