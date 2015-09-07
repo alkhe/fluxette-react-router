@@ -30,7 +30,7 @@ export default class RepoCard extends React.Component {
 					<Button
 						isPrimary
 						type='FlatButton'>
-						<Link to={ `${ repo.owner.login }/${ repo.name }` }>
+						<Link to={ `/${ repo.owner.login }/${ repo.name }` }>
 							Details
 						</Link>
 					</Button>

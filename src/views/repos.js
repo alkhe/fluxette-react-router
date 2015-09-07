@@ -1,17 +1,14 @@
 import React from 'react';
-import { connect } from 'fluxette';
+import { connect } from 'fluxette-react';
 import RepoCard from './repo.card.js';
 import { search } from '../flux/actions';
 import { TextField } from 'mdl-react';
-
-let dispatch = (c, ...args) =>
-	c.context.flux.dispatch(...args);
 
 @connect()
 export default class Repos extends React.Component {
 	search(e) {
 		e.preventDefault();
-		dispatch(this, search(this.refs.search.getValue()));
+		this.dispatch(search(this.refs.search.getValue()));
 	}
 	render() {
 		let repos = this.state.repos.map(repo => <RepoCard key={ repo.id } repo={ repo } />);

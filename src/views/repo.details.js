@@ -1,10 +1,7 @@
 import React from 'react';
-import { connect } from 'fluxette';
+import { connect } from 'fluxette-react';
 import { getRepo } from '../flux/actions';
 import { Card, CardTitle, CardSupportingText, CardAction, Button } from 'mdl-react';
-
-let dispatch = (c, ...args) =>
-	c.context.flux.dispatch(...args);
 
 let pluralify = (n, text) => n + text + (n === 1 ? '' : 's');
 
@@ -12,7 +9,7 @@ let pluralify = (n, text) => n + text + (n === 1 ? '' : 's');
 export default class RepoDetails extends React.Component {
 	componentWillMount() {
 		let { params } = this.props;
-		dispatch(this, getRepo(params.owner, params.repo));
+		this.dispatch(getRepo(params.owner, params.repo));
 	}
 	render() {
 		let repo = this.state.details;

@@ -1,7 +1,7 @@
 import React from 'react';
 import Router, { Route } from 'react-router';
-import BrowserHistory from 'react-router/lib/BrowserHistory';
-import { Context } from 'fluxette';
+import { createHistory } from 'history';
+import { Context } from 'fluxette-react';
 import flux from './flux';
 
 import Index from './views/';
@@ -25,4 +25,4 @@ class Root extends React.Component {
 	}
 }
 
-React.render(<Root history={ new BrowserHistory() } />, document.getElementById('root'));
+React.render(<Root history={ createHistory() } />, document.getElementById('root'));

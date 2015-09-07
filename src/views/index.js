@@ -1,15 +1,15 @@
 import React, { PropTypes } from 'react';
-import { connect } from 'fluxette';
+import { connect } from 'fluxette-react';
 import { Layout, Button, Icon } from 'mdl-react';
 import FloatingLoader from './floating.loader';
 
 @connect()
 export default class Index extends React.Component {
 	static contextTypes = {
-		router: PropTypes.any.isRequired
+		history: PropTypes.any.isRequired
 	}
 	goBack() {
-		this.context.router.goBack();
+		this.context.history.goBack();
 	}
 	render() {
 		let links = [

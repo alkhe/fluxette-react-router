@@ -1,15 +1,16 @@
-import { Shape, Reducer } from 'fluxette';
+import Shape from 'reducer/shape';
+import Leaf from 'reducer/leaf';
 import { SEARCH, REPO } from './types';
 
 export default Shape({
-	repos: Reducer([], {
+	repos: Leaf([], {
 		[SEARCH.SUCCESS]: (repos, action) => action.repos
 	}),
-	details: Reducer(null, {
+	details: Leaf(null, {
 		[REPO.REQUEST]: () => null,
 		[REPO.SUCCESS]: (repo, action) => action.repo
 	}),
-	loading: Reducer(false, {
+	loading: Leaf(false, {
 		[SEARCH.REQUEST]: () => true,
 		[SEARCH.SUCCESS]: () => false,
 		[REPO.REQUEST]: () => true,
