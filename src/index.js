@@ -1,28 +1,18 @@
 import React from 'react';
-import Router, { Route } from 'react-router';
 import { createHistory } from 'history';
 import { Context } from 'fluxette-react';
 import flux from './flux';
 
-import Index from './views/';
-import Repos from './views/repos';
-import RepoDetails from './views/repo.details';
+import Routes from './routes';
 
 class Root extends React.Component {
 	render() {
 		return (
-			<Context flux={ flux }>
-				{ () =>
-					<Router history={ this.props.history }>
-						<Route path='/' component={ Index }
-							indexRoute={{ component: Repos }}>
-							<Route path=':owner/:repo' component={ RepoDetails } />
-						</Route>
-					</Router>
-				}
+			<Context flux={ this.props.flux }>
+				{ () => <Routes history={ this.props.history } /> }
 			</Context>
 		);
 	}
 }
 
-React.render(<Root history={ createHistory() } />, document.getElementById('root'));
+React.render(<Root flux={ flux } history={ createHistory() } />, document.getElementById('root'));
